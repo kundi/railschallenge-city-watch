@@ -11,9 +11,7 @@ class EmergenciesController < ApplicationController
   end
 
   def show
-    if params[:code] == 'new'
-      raise ActionController::RoutingError, 'do not support new route'
-    end
+    fail ActionController::RoutingError, 'do not support new route' if params[:code] == 'new'
   end
 
   private

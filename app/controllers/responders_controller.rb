@@ -11,9 +11,7 @@ class RespondersController < ApplicationController
   end
 
   def show
-    if params[:name] == 'new'
-      raise ActionController::RoutingError, 'do not support new route'
-    end
+    fail ActionController::RoutingError, 'do not support new route' if params[:name] == 'new'
   end
 
   private
