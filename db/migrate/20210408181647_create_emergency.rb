@@ -5,6 +5,7 @@ class CreateEmergency < ActiveRecord::Migration
       t.integer :fire_severity, null: false
       t.integer :police_severity, null: false
       t.integer :medical_severity, null: false
+      t.datetime :resolved_at
     end
   end
 end

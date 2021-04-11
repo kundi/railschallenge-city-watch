@@ -14,10 +14,11 @@
 ActiveRecord::Schema.define(version: 20210408182249) do
 
   create_table "emergencies", id: false, force: :cascade do |t|
-    t.string  "code",             null: false
-    t.integer "fire_severity",    null: false
-    t.integer "police_severity",  null: false
-    t.integer "medical_severity", null: false
+    t.string   "code",             null: false
+    t.integer  "fire_severity",    null: false
+    t.integer  "police_severity",  null: false
+    t.integer  "medical_severity", null: false
+    t.datetime "resolved_at"
   end
 
   add_index "emergencies", ["code"], name: "index_emergencies_on_code"
