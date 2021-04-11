@@ -5,6 +5,8 @@ class RespondersController < ApplicationController
 
   def index
     @responders = Responder.all
+    @show_capacity = params[:show]
+    @capacities = CapacityCalculator.call(@responders) if @show_capacity && @show_capacity == 'capacity'
   end
 
   def create

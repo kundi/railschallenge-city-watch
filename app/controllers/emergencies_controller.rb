@@ -10,7 +10,9 @@ class EmergenciesController < ApplicationController
   def create
     @emergency = Emergency.new(emergency_params_for_create)
     if @emergency.save
-      render json: { emergency: @emergency }, status: :created
+      response_hash = @emergency.attributes.merge(responders: @emergency.responders.pluck(:name),
+                                                  full_response: Emergency.calculate_full_response_ration)
+      render json: { emergency: response_hash }, status: :created
     else
       render json: { message: @emergency.errors.messages }, status: :unprocessable_entity
     end
